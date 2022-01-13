@@ -62,3 +62,59 @@ setup = () => {
 	}
 	noCursor();
 }
+
+draw = () => {
+	background(0);
+	for (var i = 0; i < ar.length; i++) {
+		for (var j = 0; j < ar.length; j++) {
+			var t = "";
+			var clr;
+			switch (ar[i][j].shade) {
+				case 1:
+					clr = Ncolors[ar[i][j].val];
+					t += "";
+					break;
+				case 0:
+					clr = Wcolors[ar[i][j].val];
+					t += "w";
+					break;
+				case 2:
+					clr = Bcolors[ar[i][j].val];
+					t += "b";
+					break;
+			}
+			fill(clr);
+			t += ar[i][j].val;
+			stroke(50);
+			strokeWeight(5);
+			rect(i * s, j * s, s, s);
+			noStroke();
+			fill(invert(clr));
+			textSize(s / 3);
+			textAlign(LEFT, BOTTOM);
+			text(t, (i + 0.12) * s, (j + 0.8) * s);
+		}
+	}
+	for (var i = 0; i < 9; i++) {
+		var t = "";
+		var clr;
+		switch (selB) {
+			case 1:
+				clr = Ncolors[i + 1];
+				t += "";
+				break;
+			case 0:
+				clr = Wcolors[i + 1];
+				t += "w";
+				break;
+			case 2:
+				clr = Bcolors[i + 1];
+				t += "b";
+				break;
+		}
+		fill(clr);
+		stroke(0);
+		var asd = 0;
+		if(sel == i+1){
+			asd=S/2;
+		}
