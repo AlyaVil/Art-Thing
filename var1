@@ -118,3 +118,42 @@ draw = () => {
 		if(sel == i+1){
 			asd=S/2;
 		}
+rect(i * s, (j * s)-asd, s, s);
+	}
+	var ss = 15;
+	if (mouseIsPressed) {
+		ss += 10;
+		if (left) {
+			var x = floor(mouseX / s);
+			var y = floor(mouseY / s);
+			if (y <= 8 & y >= 0 & x <= 8 & x >= 0) {
+				ar[x][y].val = sel;
+				ar[x][y].shade = selB;
+			}
+		}
+	}
+	push();
+	if (mouseY >= 9 * s) {
+		fill(250);
+		stroke(25);
+		strokeWeight(3);
+		ellipse(mouseX, mouseY, ss);
+	} else {
+		fill(200, 100);
+		stroke(0);
+		strokeWeight((ss / 14) * 2);
+		push();
+		noFill();
+		strokeWeight(2);
+		var xx = floor(mouseX/s);
+		var yy = floor(mouseY/s);
+		var cll = Ncolors[sel];
+		stroke(cll);
+		rect(xx*s, yy*s, s, s);
+		pop();
+		rectMode(CENTER);
+		rect(mouseX, mouseY, s, s);
+	}
+	pop();
+}
+
