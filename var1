@@ -157,3 +157,50 @@ rect(i * s, (j * s)-asd, s, s);
 	pop();
 }
 
+mousePressed = (event) => {
+	var x = floor(mouseX / s);
+	var y = floor(mouseY / s);
+	left = true;
+	if (event.button == 2) {
+		left = false;
+		if (selB == 2) {
+			selB = 0;
+		} else {
+			selB++;
+		}
+	}
+	if (y <= 8) {} else {
+		sel = x + 1;
+	}
+}
+
+keyPressed = () => {
+	var key = "";
+	var b = [];
+	var n = 0;
+	for (var j = 0; j < ar.length; j++) {
+		for (var i = 0; i < ar[j].length; i++) {
+			b[n] = ar[i][j];
+			n++;
+		}
+	}
+	for (a of b) {
+		if (a.shade == 0) {
+			key += "w"
+		} else if (a.shade == 2) {
+			key += "b"
+		}
+		key += a.val + ",";
+	}
+	key[key.length - 1] = "";
+	prompt("COPY THIS TEXT BELOW", key);
+}
+
+function invert(c) {
+	var q = [];
+	var cl = color(c);
+	q[0] = map(red(cl), 0, 255, 255, 0);
+	q[1] = map(green(cl), 0, 255, 255, 0);
+	q[2] = map(blue(cl), 0, 255, 255, 0);
+	return q;
+}
